@@ -1,4 +1,4 @@
-# cotizador de Criptomonedas
+# Cotizador de Criptomonedas
 
 Cotizador de cripto monedas.
 
