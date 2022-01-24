@@ -22,15 +22,17 @@ document.addEventListener('DOMContentLoaded', () => {
 	monedaSelect.addEventListener('change', leerValor);
 });
 
+// Traer las 15 monedas cripto más populares del momento
 function consultarCriptomonedas() {
-	const url = 'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=15&tsym=USD';
+	const urlTopList = 'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=15&tsym=USD';
 
-	fetch(url)
+	fetch(urlTopList)
 		.then((resp) => resp.json())
 		.then((resultado) => obtenerCriptomonedas(resultado.Data))
 		.then((criptomonedas) => selectCriptomonedas(criptomonedas));
 }
 
+// llenando el select con las 15 cripto más populares actualmente
 function selectCriptomonedas(criptomonedas) {
 	criptomonedas.forEach((cripto) => {
 		const { FullName, Name } = cripto.CoinInfo;
@@ -39,6 +41,7 @@ function selectCriptomonedas(criptomonedas) {
 		option.value = Name;
 		option.textContent = FullName;
 
+		// insertandolo en el html
 		criptomonedasSelect.appendChild(option);
 	});
 }
